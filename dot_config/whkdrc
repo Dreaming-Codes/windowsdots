@@ -1,0 +1,94 @@
+.shell powershell
+
+# ============================================================================
+# Hyprland-style keybindings for komorebi (SUPER as modifier)
+# ============================================================================
+
+# Reload configuration
+win + shift + o         : komorebic reload-configuration
+
+# App shortcuts
+win + w                 : start helium
+win + space             : wt
+win + c                 : start "" "vicinae://extensions/vicinae/clipboard/history"
+
+# Screenshot
+print                   : explorer ms-screenclip:
+
+# Window management
+win + q                 : komorebic close
+win + o                 : komorebic toggle-float
+win + f                 : komorebic toggle-monocle
+win + m                 : komorebic toggle-pause
+
+# Mouse window management
+# win + lbutton           : komorebic move-mouse-floating
+# win + rbutton           : komorebic resize-mouse-floating
+
+# Focus windows (arrows)
+win + left              : komorebic focus left
+win + right             : komorebic focus right
+win + up                : komorebic focus up
+win + down              : komorebic focus down
+
+# Move windows
+win + shift + left      : komorebic move left
+win + shift + right     : komorebic move right
+win + shift + up        : komorebic move up
+win + shift + down      : komorebic move down
+win + shift + h         : komorebic move left
+win + shift + l         : komorebic move right
+win + shift + k         : komorebic move up
+win + shift + j         : komorebic move down
+
+# Workspaces 1-10 (1-0 keys)
+win + 1                 : komorebic focus-named-workspace 1
+win + 2                 : komorebic focus-named-workspace 2
+win + 3                 : komorebic focus-named-workspace 3
+win + 4                 : komorebic focus-named-workspace 4
+win + 5                 : komorebic focus-named-workspace 5
+win + 6                 : komorebic focus-named-workspace 6
+win + 7                 : komorebic focus-named-workspace 7
+win + 8                 : komorebic focus-named-workspace 8
+win + 9                 : komorebic focus-named-workspace 9
+win + 0                 : komorebic focus-named-workspace 0
+
+# Move windows to workspaces 1-10
+win + shift + 1         : komorebic send-to-named-workspace 1
+win + shift + 2         : komorebic send-to-named-workspace 2
+win + shift + 3         : komorebic send-to-named-workspace 3
+win + shift + 4         : komorebic send-to-named-workspace 4
+win + shift + 5         : komorebic send-to-named-workspace 5
+win + shift + 6         : komorebic send-to-named-workspace 6
+win + shift + 7         : komorebic send-to-named-workspace 7
+win + shift + 8         : komorebic send-to-named-workspace 8
+win + shift + 9         : komorebic send-to-named-workspace 9
+win + shift + 0         : komorebic send-to-named-workspace 0
+
+# F1-F12 workspaces (secondary monitor)
+win + f1                : komorebic focus-named-workspace F1
+win + f2                : komorebic focus-named-workspace F2
+win + f3                : komorebic focus-named-workspace F3
+win + f4                : komorebic focus-named-workspace F4
+win + f5                : komorebic focus-named-workspace F5
+win + f6                : komorebic focus-named-workspace F6
+win + f7                : komorebic focus-named-workspace F7
+win + f8                : komorebic focus-named-workspace F8
+win + f9               : komorebic focus-named-workspace F9
+win + f10               : komorebic focus-named-workspace F10
+win + f11               : komorebic focus-named-workspace F11
+win + f12               : komorebic focus-named-workspace F12
+
+# Move windows to F1-F12 workspaces (secondary monitor)
+win + shift + f1        : komorebic send-to-named-workspace F1
+win + shift + f2        : komorebic send-to-named-workspace F2
+win + shift + f3        : komorebic send-to-named-workspace F3
+win + shift + f4        : komorebic send-to-named-workspace F4
+win + shift + f5        : komorebic send-to-named-workspace F5
+win + shift + f6        : komorebic send-to-named-workspace F6
+win + shift + f7        : komorebic send-to-named-workspace F7
+win + shift + f8        : komorebic send-to-named-workspace F8
+win + shift + f9       : komorebic send-to-named-workspace F9
+win + shift + f10       : komorebic send-to-named-workspace F10
+win + shift + f11       : komorebic send-to-named-workspace F11
+win + shift + f12       : komorebic send-to-named-workspace F12

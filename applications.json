@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.asc.json",
+  "Calculator": {
+    "ignore": [
+      {
+        "kind": "Title",
+        "id": "Calculator",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+  "Google Chrome": {
+    "tray_and_multi_window": [
+      {
+        "kind": "Exe",
+        "id": "chrome.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+  "Microsoft Edge": {
+    "ignore": [
+      [
+        {
+          "kind": "Exe",
+          "id": "msedge.exe",
+          "matching_strategy": "Equals"
+        },
+        {
+          "kind": "Class",
+          "id": "Chrome_WidgetWin_2",
+          "matching_strategy": "Equals"
+        }
+      ]
+    ]
+  },
+  "Task Manager": {
+    "ignore": [
+      {
+        "kind": "Class",
+        "id": "TaskManagerWindow",
+        "matching_strategy": "Legacy"
+      }
+    ]
+  },
+  "Windows Explorer": {
+    "tray_and_multi_window": [
+      {
+        "kind": "Exe",
+        "id": "explorer.exe",
+        "matching_strategy": "Equals"
+      }
+    ],
+    "ignore": [
+      {
+        "kind": "Class",
+        "id": "NativeHWNDHost",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Class",
+        "id": "OperationStatusWindow",
+        "matching_strategy": "Legacy"
+      },
+      {
+        "kind": "Title",
+        "id": "Control Panel",
+        "matching_strategy": "Legacy"
+      }
+    ]
+  },
+  "Windows Terminal": {
+    "tray_and_multi_window": [
+      {
+        "kind": "Exe",
+        "id": "WindowsTerminal.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+  "Windows Installer": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "msiexec.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+  "Zed": {
+    "layered": [
+      {
+        "kind": "Exe",
+        "id": "zed.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  }
+}

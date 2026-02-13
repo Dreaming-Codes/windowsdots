@@ -1,0 +1,3 @@
+# setup.ps1 hash: {{ include "setup.ps1" | sha256sum }}
+
+powershell -ExecutionPolicy Bypass -File {{ joinPath .chezmoi.sourceDir "setup.ps1" | quote }}

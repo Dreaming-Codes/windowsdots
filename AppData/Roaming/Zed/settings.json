@@ -1,0 +1,15 @@
+{
+  "relative_line_numbers": "enabled",
+  "helix_mode": true,
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+}
