@@ -1,3 +1,3 @@
-```batch
-winget install --id Git.Git --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements --scope user && winget install --id twpayne.chezmoi --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements --scope user && chezmoi init --apply git@github.com:Dreaming-Codes/windowsdots
+```powershell
+winget install --id Git.Git --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements --scope user; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; winget install --id twpayne.chezmoi --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements --scope user; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; $chezmoi="$env:LOCALAPPDATA\Microsoft\WinGet\Links\chezmoi.exe"; if (!(Test-Path $chezmoi)) { $chezmoi="$env:LOCALAPPDATA\Programs\chezmoi\bin\chezmoi.exe" }; & $chezmoi init --apply git@github.com:Dreaming-Codes/windowsdots
 ```
