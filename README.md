@@ -1,3 +1,3 @@
-```powershell
-winget install --id Git.Git --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements --scope user; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; winget install --id twpayne.chezmoi --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements --scope user; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; $chezmoi="$env:LOCALAPPDATA\Microsoft\WinGet\Links\chezmoi.exe"; if (!(Test-Path $chezmoi)) { $chezmoi="$env:LOCALAPPDATA\Programs\chezmoi\bin\chezmoi.exe" }; & $chezmoi init --apply git@github.com:Dreaming-Codes/windowsdots
+```cmd
+cmd /c "curl.exe -fsSL https://raw.githubusercontent.com/Dreaming-Codes/windowsdots/master/bootstrap.ps1 -o %TEMP%\setup.ps1 && powershell -NoProfile -ExecutionPolicy Bypass -File %TEMP%\setup.ps1"
 ```
