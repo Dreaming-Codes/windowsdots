@@ -134,7 +134,7 @@ $content = @'
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "helix_mode": true,
+  "vim_mode": true,
   "session": {
     "trust_all_worktrees": true
   },
