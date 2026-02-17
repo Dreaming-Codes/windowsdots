@@ -278,16 +278,22 @@ Start-Process explorer
 Write-Host "  Windows personalization applied." -ForegroundColor Green
 
 # =============================================================
-# Phase 7: Install whkd and komorebi
+# Phase 7: Install whkd, komorebi, and masir
 # =============================================================
 
-Write-Host "`n[8/8] Installing whkd and komorebi..." -ForegroundColor Cyan
+Write-Host "`n[8/8] Installing whkd, komorebi, and masir..." -ForegroundColor Cyan
 
 $toolsDir = "$env:LOCALAPPDATA\Tools"
 $whkdDir = "$toolsDir\whkd"
 $komorebiDir = "$toolsDir\komorebi"
+$masirDir = "$toolsDir\masir"
 $whkdUrl = "https://github.com/LGUG2Z/whkd/releases/download/v0.2.10/whkd-0.2.10-x86_64-pc-windows-msvc.zip"
-$komorebiUrl = "https://github.com/LGUG2Z/komorebi/releases/download/v0.1.39/komorebi-0.1.39-x86_64-pc-windows-msvc.zip"
+$komorebiLatest = (curl.exe -sL "https://api.github.com/repos/LGUG2Z/komorebi/releases/latest" | ConvertFrom-Json).tag_name
+$komorebiVersion = $komorebiLatest.TrimStart("v")
+$komorebiUrl = "https://github.com/LGUG2Z/komorebi/releases/download/$komorebiLatest/komorebi-$komorebiVersion-x86_64-pc-windows-msvc.zip"
+$masirLatest = (curl.exe -sL "https://api.github.com/repos/LGUG2Z/masir/releases/latest" | ConvertFrom-Json).tag_name
+$masirVersion = $masirLatest.TrimStart("v")
+$masirUrl = "https://github.com/LGUG2Z/masir/releases/download/$masirLatest/masir-$masirVersion-x86_64-pc-windows-msvc.zip"
 
 # Create tools directory
 if (-not (Test-Path $toolsDir)) {
@@ -324,17 +330,33 @@ if (Test-Path (Join-Path $komorebiDir "komorebic.exe")) {
     Remove-Item $komorebiZip
 }
 
+# Download and install masir
+if (Test-Path (Join-Path $masirDir "masir.exe")) {
+    Write-Host "  masir already installed. Skipping download." -ForegroundColor DarkGray
+} else {
+    Write-Host "  Downloading masir..." -ForegroundColor DarkGray
+    $masirZip = "$env:TEMP\masir.zip"
+    curl.exe -sL -o $masirZip $masirUrl
+
+    if (Test-Path $masirDir) {
+        Remove-Item -Recurse -Force $masirDir
+    }
+    Expand-Archive -Path $masirZip -DestinationPath $masirDir -Force
+    Remove-Item $masirZip
+}
+
 # Add to PATH
 Write-Host "  Adding to PATH..." -ForegroundColor DarkGray
 $userPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 $pathEntries = $userPath -split ";" | Where-Object { $_ -ne "" }
 
 # Remove old entries if they exist
-$pathEntries = $pathEntries | Where-Object { $_ -notmatch "whkd|komorebi" }
+$pathEntries = $pathEntries | Where-Object { $_ -notmatch "whkd|komorebi|masir" }
 
 # Add new entries
 $pathEntries += $whkdDir
 $pathEntries += $komorebiDir
+$pathEntries += $masirDir
 
 $newPath = ($pathEntries -join ";").TrimEnd(";")
 [System.Environment]::SetEnvironmentVariable("Path", $newPath, "User")
@@ -342,7 +364,7 @@ Refresh-Path
 
 $komorebicCmd = Join-Path $komorebiDir "komorebic.exe"
 if (Test-Path $komorebicCmd) {
-    $autostart = Start-Process -FilePath $komorebicCmd -ArgumentList "enable-autostart --whkd --bar" -Wait -NoNewWindow -PassThru
+    $autostart = Start-Process -FilePath $komorebicCmd -ArgumentList "enable-autostart --whkd --bar --masir" -Wait -NoNewWindow -PassThru
     if ($autostart.ExitCode -eq 0) {
         Write-Host "  Komorebi autostart enabled." -ForegroundColor DarkGray
     } else {
@@ -350,4 +372,12 @@ if (Test-Path $komorebicCmd) {
     }
 } else {
     Write-Warning "komorebic.exe not found; skipping autostart setup."
+}
+
+# Start komorebi if not already running
+if (-not (Get-Process -Name "komorebi" -ErrorAction SilentlyContinue)) {
+    Write-Host "  Starting komorebi..." -ForegroundColor DarkGray
+    Start-Process -FilePath $komorebicCmd -ArgumentList "start --bar --whkd --masir" -NoNewWindow
+} else {
+    Write-Host "  komorebi is already running. Skipping start." -ForegroundColor DarkGray
 }

@@ -1,11 +1,14 @@
+{{- $primaryDeviceId := output "powershell" "-NoProfile" "-ExecutionPolicy" "Bypass" "-File" (joinPath .chezmoi.sourceDir ".chezmoitemplates/get-primary-monitor-device-id.ps1") | trim -}}
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.39/schema.json",
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
+  "display_index_preferences": {
+    "0": "{{ $primaryDeviceId }}"
+  },
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
   "default_workspace_padding": 0,
   "default_container_padding": 0,
-  "focus_follows_mouse": "Windows",
   "border": true,
   "border_width": 0,
   "border_offset": -1,

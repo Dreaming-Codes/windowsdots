@@ -8,9 +8,8 @@
 win + shift + o         : komorebic reload-configuration
 
 # App shortcuts
-win + w                 : start helium
+win + w                 : start "C:\Program Files\Google\Chrome\Application\chrome.exe"
 win + space             : wt
-win + c                 : start "" "vicinae://extensions/vicinae/clipboard/history"
 
 # Screenshot
 print                   : explorer ms-screenclip:
