@@ -29,4 +29,4 @@ if (-not $chezmoiCmd) {
     throw "chezmoi.exe not found after installation"
 }
 
-& $chezmoiCmd.Source init --apply git@github.com:Dreaming-Codes/windowsdots
+& $chezmoiCmd.Source init --apply https://github.com/Dreaming-Codes/windowsdots
