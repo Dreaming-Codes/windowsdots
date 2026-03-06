@@ -260,19 +260,6 @@ matches:
       UCR BearHelp
       951-827-4848
 
-  - trigger: ":its-confirm-resolved-user-formal"
-    replace: |
-      Good morning,
-
-      Thank you for letting us know your issue is resolved. I hope you found our ITS BearHelp support to be friendly and helpful. This ticket is now marked as resolved.
-
-      If you need further assistance, respond to this email to reopen the ticket within 48 hours. Have a great rest of your day!
-
-      Best,
-      Lorenzo
-      UCR BearHelp
-      951-827-4848
-
   - trigger: ":its-no-reply-3-attempts"
     replace: |
       Hello,
