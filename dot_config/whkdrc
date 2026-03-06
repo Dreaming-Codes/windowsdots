@@ -11,6 +11,15 @@ win + shift + o         : komorebic reload-configuration
 win + w                 : start "C:\Program Files\Google\Chrome\Application\chrome.exe"
 win + space             : wt
 
+# Zoom Contact Center
+# `win + alt + p` opens the selected number via a `tel:` link, so Zoom
+# Workplace must be the default handler for phone links. The inbound call
+# shortcuts should be enabled as global shortcuts in Zoom Workplace.
+win + alt + p           : powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.config\whkd\scripts\zoom-contact-center.ps1" call-selected
+win + alt + a           : powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.config\whkd\scripts\zoom-contact-center.ps1" pickup
+win + alt + e           : powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.config\whkd\scripts\zoom-contact-center.ps1" hangup
+win + alt + f           : powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.config\whkd\scripts\zoom-contact-center.ps1" finish-wrap-up
+
 # Screenshot
 print                   : explorer ms-screenclip:
 
